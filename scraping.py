@@ -30,6 +30,7 @@ def scrape_info():
     
     article_title = []
     article_link = []
+    article_text = []
 
     # assign article title and url to lists
     for result in results_nasa:
@@ -41,7 +42,7 @@ def scrape_info():
             # Identify and return link to listing
             link = result.a['href']
             if search('http', link):
-                link = link
+                continue
             else:
                 link = url_nasa + link
 
@@ -52,8 +53,20 @@ def scrape_info():
         except AttributeError as e:
             print(e)
 
+    for src in article_link:
+    
+        # Retrieve page with the requests module
+        response_nasa = requests.get(src)
+        
+        # Create BeautifulSoup object; parse with 'html.parser'
+        soup_nasa = bs(response_nasa.text, 'html.parser')
+        
+        # results are returned as an iterable list
+        results_nasa = soup_nasa.find('div', class_='wysiwyg_content')
+        article_text.append(results_nasa.find_all('p')[1].text)
+
     # import lists into nasa_news dictionary
-    nasa_news['nasa'] = {'title': article_title, 'src': article_link}
+    nasa_news['nasa'] = {'title': article_title, 'src': article_link, 'parag': article_text}
 
 # ******************************************************************************
 # ******************************************************************************
@@ -123,6 +136,7 @@ def scrape_info():
 
         browser.links.find_by_partial_text(hemis[i]).click()
         new_url = browser.url
+        
         response_title = requests.get(new_url)
         # Create BeautifulSoup object; parse with 'html.parser'
 
@@ -139,16 +153,12 @@ def scrape_info():
 
     browser.quit()
 
-    # img_data['title'].append(title)
-    # img_data['img'].append(img)
-
     for index in range(len(title)):
         title[index] = title[index].split(" | ")[0]
         title[index] = title[index].replace(' Enhanced','')
 
     nasa_news['hemi'] = {'name': title, 'src': img}
-    # nasa_news['hemi_title'] = img_data['title']
-    # nasa_news['hemi_img'] = img_data['img']
+ 
 
 # ********************************************************************************
 # ********************************************************************************
@@ -170,8 +180,8 @@ def scrape_info():
     mars_earth_tb.set_index('Attribute', inplace = True)
 
     # generate HTML code for each table
-    mars_earth_html = mars_earth_tb.to_html(header = False, index_names = False, justify = 'left')
-    mars_data_html = mars_data_tb.to_html(header = False, index_names = False, justify = 'left')
+    mars_earth_html = mars_earth_tb.to_html(index_names = False, border = 0, justify = 'left')
+    mars_data_html = mars_data_tb.to_html(index_names = False, border = 0, justify = 'left')
 
     nasa_news['mars_facts'] = mars_data_html
     nasa_news['mars_earth_facts'] = mars_earth_html

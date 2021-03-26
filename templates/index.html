@@ -10,110 +10,140 @@
 </head>
 
 <body>
-<hr style="margin-top: 0px; margin-bottom:0px;">
-    <header class = "comp-title_style">
+
+    <header style = "background: lightgray;">
       <h1>Welcome to the Mars Facts Page</h1> 
+      <h6 class = "comp-p">Navigate to '/scrape' to update news and pictures about Mars</h6>  
     </header>
-
-    <h6 class = "comp-p">Navigate to '/scrape' to populate some facts and pictures about Mars</h6>  
-
-    <hr style="margin-top: 0px; margin-bottom:0px;">
 
     <div class="container-fluid comp-container">
 
-        <div class="row comp-row">
+      <div class="row comp-row">
 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 comp-col">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 
-                <Figure>
-                    <a target="_self" href= {{ data.mars.src }} </a>
-                        <img src= {{ data.mars.src }} alt = "Mars Featured Image"/>
-                    </a>
-                    <figcaption>{{ data.mars.title }}</figcaption>
-                </Figure>
-            </div>
+          <Figure>
+              <a target="_self" href= {{ data.mars.src }}>
+                  <img src= {{ data.mars.src }} alt = "Mars Featured Image"/>
+              </a>
+              <figcaption style = "font-weight: bold; font-style: italic;"> 
+                <a href = {{ data.mars.src }}>{{ data.mars.title }} </a>
+              </figcaption>
+          </Figure>
+          
+        </div>
 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 comp-col">  
-              <div class="card" style="width: 18rem;">
-                <img alt="Nasa Logo" src="https://mars.nasa.gov/assets/logo_mars_trio_black@2x.png">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">  
+          <container style = "background: lightgray; display: inline-flex;
+          width: 100%; text-align: center; margin-bottom: 0px;">
+            <img alt="Nasa Logo"
+            src="https://mars.nasa.gov/assets/logo_mars_trio_black@2x.png">
+          </container>
+          <container style = "background: lightgray; display: block;
+          width: 100%; margin-top: 0px;">
+            <h5><strong>Latest News and Events from mars.nasa.gov</strong></h5>
+          </container>
+
+          <container style = "display: flex; justify-content:space-between;
+          margin-bottom: 50px;">
+
+            <ul class="list-group list-group-flush" 
+            style = "display: inline-block; vertical-align: top;">
+              <li style = "list-style: none;
+              font-weight: bold; color: black; font-size: 15px; float: left;"
+              >Headline</li>
+              {% for title in data.nasa.title %}
                 
-                <div class="card-body">
-                  <h5 class="card-title">Latest News and Events</h5>
-                  <p class="card-text">Top news and events related Mars from nasa.gov</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <!-- lets try a table here -->
-                  <!-- what about for item in data.nasa? Did I try this before?? -->
-                  {% for title in data.nasa.title %}
-                    <li> </li>
-                    <li class="list-group-item">{{ title }}</li>
-                  {% endfor %}
+                <li class="list-group-item" 
+                style = "list-style: none; font-weight: bold; color:rgb(37, 49, 114);
+                float: left; width:150px; height: 100px;"
+                >{{ title }}</li>
+              {% endfor %}
 
-                  <!-- {% for src in data.nasa.src %}
-  
-                  <li> {{ src }}</li>
-                 
-                  {% endfor %} -->
-                </ul>
-                <div class="card-body">
+            </ul>
 
-                </div>
-            </div>
+            <ul class="list-group list-group-flush"
+            style = "display: inline-block; vertical-align: top;">
+              <li style = "list-style: none;font-weight: bold; color: black;
+              font-size: 15px;">About</li>
+              {% for parag in data.nasa.parag %}
+                
+                <li class="list-group-item" style = "list-style: none; font-weight: bold; color:rgb(37, 49, 114);
+                float: right; width:500px; height: 100px">
+                {{ parag }}
+                </li>
+              {% endfor %}
 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 comp-col">
-                <Figure>
-                    <a target="_self" href="speed.html">
-                    <img src="Resources/assets/images/cities_speed_lat.png" class = "comp-img-fourplots" alt = "Speed"/>
-                    </a>
-                    <figcaption>Wind Speed vs Latitude</figcaption>
-                </Figure>
-            </div>
+            </ul>
 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 comp-col">
-                <Figure>
-                    <a target="_self" href="cloudy.html">
-                    <img src="Resources/assets/images/cities_cloud_lat.png" class = "comp-img-fourplots" alt = "Cloud"/>
-                    </a>
-                    <figcaption>Cloudiness vs Latitude</figcaption>
-                </Figure>
-            </div>
+          </container>
 
         </div>
+
+
+      </div>
     </div>
+  <div class="container-fluid comp-container" style = "background: lightgray;
+        display: block; width: 100%; text-align: center; margin-bottom: 20px;
+        margin-top: 20px;">
+    <div class="jumbotron text-center">
+      <h1>Hemispeheres of Mars</h1>
+    </div>
+  </div>
 
+  <div class="container-flex comp-container">
 
-<section>
+    <div class="row" style = "height: 300px; display: flex; margin-left:0px">
+      {% for hemi in data.hemi.src %}
+      <div class="col-3"
+          style = "display: flex; margin:0 px;">
+          
+          <a target="_self" href= {{ hemi }}>
+            <img src = {{ hemi }}
+            style = "position: relative; width: 220%; margin-left: 15px;
+            margin-right: 15px; display: inline; float:left;" 
+            alt = "One of Mars Hemispeheres"/>
+          </a>
+      </div>
+      {% endfor %}
+      {% for name in data.hemi.name %}
+      <div class="col-3"
+          style = "display: flex; margin:0 px; justify-content: center;">
+          <h5 style = "position: relative; width: 100%; margin-left: 15px;
+          margin-right: 15px; display: inline; float:left;"> {{ name }} </h5>
+          
+      </div>
+      {% endfor %}
+        
+      
+    </div>
+  </div>
+ 
+  <div class="container-fluid comp-container" style = "background: lightgray;
+        display: block; width: 100%; text-align: center; margin-top: 30px;
+        margin-bottom: 10px;">
+    <div class="jumbotron text-center">
+    <h1>Data about Mars</h1>
+    </div>
+  </div> 
 
+  <div class="container-fluid">
 
-   
-</section>
+    <div class="row comp-row">
+      <div class = 'col-12' style = 'display: flex; justify-content: space-evenly;'>
 
-<section>
+          {{ data.mars_facts | safe }}
+    
+          {{ data.mars_earth_facts | safe }}
 
-  <Figure>
-    {% for hemi in data.hemi.src %}
-    <img src= {{ hemi }} alt = ""/>
-  
-    <figcaption> {{ hemi.name }} </figcaption>
-    {% endfor %}
-  </Figure>
+      </div>
 
-</section>
-
-<table class = 'table'>
-
-  {{ data.mars_facts | safe }}
-
-</table>
-
-<table class = 'table'>
-
-  {{ data.mars_earth_facts | safe }}
-
-</table>
-
-</section>
-
+      </div>
+      
+        
+    </div>
+    </div>
+  </div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
