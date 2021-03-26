@@ -50,12 +50,13 @@
             <ul class="list-group list-group-flush" 
             style = "display: inline-block; vertical-align: top;">
               <li style = "list-style: none;
-              font-weight: bold; color: black; font-size: 15px; float: left;"
+              font-weight: bold; color: black; font-size: 20px; float: left;"
               >Headline</li>
               {% for title in data.nasa.title %}
                 
                 <li class="list-group-item" 
-                style = "list-style: none; font-weight: bold; color:rgb(37, 49, 114);
+                style = "list-style: none; font-weight: bold;
+                color:rgb(37, 49, 114);
                 float: left; width:150px; height: 100px;"
                 >{{ title }}</li>
               {% endfor %}
@@ -65,7 +66,7 @@
             <ul class="list-group list-group-flush"
             style = "display: inline-block; vertical-align: top;">
               <li style = "list-style: none;font-weight: bold; color: black;
-              font-size: 15px;">About</li>
+              font-size: 20px;">About</li>
               {% for parag in data.nasa.parag %}
                 
                 <li class="list-group-item" style = "list-style: none; font-weight: bold; color:rgb(37, 49, 114);

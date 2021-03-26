@@ -93,9 +93,6 @@ def scrape_info():
     mars_img = {'title': 'JPL Features Mars Image', 'src': mars_img_url}
 
     nasa_news['mars'] = {'title': 'JPL Featured Image', 'src': mars_img_url}
-    # nasa_news['title_JPL'] = 'JPL Featured Mars Image'
-    # nasa_news['src_JPL'] = mars_img_url
-
 
 # ******************************************************************************
 # ******************************************************************************
@@ -103,7 +100,6 @@ def scrape_info():
 # and beautifulsoup
 # ******************************************************************************
 # ******************************************************************************
-
 
     # Setup splinter
     executable_path = {'executable_path': ChromeDriverManager().install()}

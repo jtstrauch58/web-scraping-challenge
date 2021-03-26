@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-import scraping
+import scrape_mars
 import pandas as pd
 
 # create instance of Flask app
@@ -23,7 +23,7 @@ def scrape():
     
     data_mars = mongo.db.data_mars
 
-    nasa_news = scraping.scrape_info()
+    nasa_news = scrape_mars.scrape_info()
 
     mongo.db.data_mars.update({}, nasa_news, upsert=True)
 
