@@ -1,32 +1,32 @@
-Web-scraping-challenge
+# Web-scraping-challenge
 
 
 In this assignment, we are to build a web application that scrapes various websites for data related to the Mission to Mars and displays the information on a single HTML page.
 
 
-A brief overview of the assigment - information
+## A brief overview of the assigment - information
 
-# NASA Mars News
+### NASA Mars News
 
 * Scrape https://mars.nasa.gov/news/ and collect the latest News Title and Paragraph Text.
 * Assign the text to variables that you can reference later
 
 
-# JPL Mars Space Images - Featured Image
+### JPL Mars Space Images - Featured Image
 
 * Use splinter to navigate https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html and find the image url for the current Featured Mars Image.
 
 * Assign the url string to a variable
 
 
-# Mars Facts
+### Mars Facts
 
 * Visit the Mars Facts webpage (https://space-facts.com/mars/) and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
 
 * Use Pandas to convert the data to a HTML table string.
 
 
-# Mars Hemispheres
+### Mars Hemispheres
 
 * Visit the USGS Astrogeology site (https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars) to obtain high resolution images for each of Mar's hemispheres.
 
@@ -37,7 +37,7 @@ A brief overview of the assigment - information
 * Append the dictionary with the image url string and the hemisphere title to a list.
 
 
-How the assignment was completed - jupyter notebook, flask, mongodb
+## How the assignment was completed - jupyter notebook, flask, mongodb
 
 * all scraping and dictionary assignment was completed in the jupyter notebook
 
